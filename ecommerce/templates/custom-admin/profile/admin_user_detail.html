@@ -1,0 +1,10 @@
+{% extends 'custom-admin/admin-base.html' %}
+
+{% block bodyblock %}
+
+<form>
+    {% csrf_token %}
+    {{user_detail}}
+</form>
+
+{% endblock %}

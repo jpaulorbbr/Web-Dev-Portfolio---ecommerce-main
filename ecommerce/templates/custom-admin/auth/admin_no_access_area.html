@@ -1,0 +1,16 @@
+{% extends 'custom-admin/admin-base.html' %}
+
+{% block bodyblock %}
+<br>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 shadow p-4 mb-5 bg-body rounded already-authenticated" >
+        <h1>You are already logged in as <span class="no-access-after-login-requested-user"><a href="{% url 'admin_user_detail' slug=requested_user %}">{{ requested_user }}</a></span>.</h1>
+        <p>Logout to login as a different user.</p>
+        <p>You can:</p>
+        <ul>
+            <li><a href="{% url 'admin_logout' %}">Logout</a></li>
+            <li><a href="{% url 'home' %}">Go to the store home</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

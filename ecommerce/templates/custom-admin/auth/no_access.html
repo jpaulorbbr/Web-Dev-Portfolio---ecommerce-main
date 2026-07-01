@@ -1,0 +1,39 @@
+{% extends 'custom-admin/admin-base.html' %}
+
+{% block title %}
+- No Access
+{% endblock %}
+
+{% block bodyblock %}
+
+{% if request.user.is_authenticated %}
+<br>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 shadow p-4 mb-5 bg-body rounded admin-register-form" >
+        <h1>You don't have access to this page.</h1>
+        <p>You're logged in as <span class="user-link-no-access">{{ user }}</span></p>
+        <p class="admin-no-access-logout-link"><a href="{% url 'admin_logout' %}"">Logout</a></p>
+    </div>
+</div>
+{% elif not request.user.is_authenticated %}
+<br>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 shadow p-4 mb-5 bg-body rounded admin-register-form" >
+        <h1>You don't have access to this page.</h1>
+        <p>You're not logged in.</p>
+        <p class="admin-no-access-logout-link"><a href="{% url 'admin_login' %}"">Login</a></p>
+        <p class="admin-no-access-store-home-link"><a href="{% url 'admin_login' %}"">Store Home</a></p>
+    </div>
+</div>
+{% else %}
+<br>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 shadow p-4 mb-5 bg-body rounded admin-register-form" >
+        <h1>You don't have access to this page.</h1>
+        <p><a href="{% url 'home' %}">Go to the store.</a></p>
+        <p class="admin-no-access-logout-link"><a href="{% url 'admin_login' %}"">Login</a></p>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

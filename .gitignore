@@ -1,0 +1,5 @@
+myvenv/
+ecommerce/frontend/node_modules/
+ecommerce/frontend/dist/
+ecommerce/static/dist/
+ecommerce/staticfiles/

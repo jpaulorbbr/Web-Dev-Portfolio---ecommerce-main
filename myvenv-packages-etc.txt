@@ -1,0 +1,29 @@
+*To activate a venv created on Windows:
+
+$ . myvenv/Scripts/activate
+
+*Python 3.12
+*Django 5.2.0 (pip install Django==5.2)
+*Pillow (pip3 install Pillow)
+*Phone Number Field (pip3 install django-phonenumber-field[phonenumbers])
+*pip install djangorestframework
+*pip install django-cors-headers
+*pip install django-vite
+
+In ecommerce/frontend:
+
+*npm install vite
+*npm install axios
+
+REACT
+*Start react with:
+$ npm run dev
+
+*Superuser: joao
+Password: jPbR!2#4
+
+normalusertest
+same password as Superuser
+
+normaluserteststaff
+same password as Superuser

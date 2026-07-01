@@ -1,0 +1,49 @@
+{% extends 'custom-admin/admin-base.html' %}
+
+{% load static %}
+
+{% block title %}
+- {{request.user.username}} - Your Profile
+{% endblock %}
+
+{% block bodyblock %}
+
+<br>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 shadow p-4 mb-5 bg-body rounded admin-profile-wb" >
+        <h1>{{request.user.username}}</h1>
+        {% if request.user.is_superuser %}
+            <h2 class="admin-profile-second-h2">Superuser</h2>
+        {% elif request.user.admin_staff %}
+            <h2 class="admin-profile-second-h2">Admin Staff</h2>
+        {% endif %}
+        <h2>{% if request.user.first_name or request.user.last_name %}{{request.user.first_name}} {{request.user.last_name}}{% elif not request.user.first_name and not request.user.last_name %}No Names{% endif %}</h2>
+        <p>You're logged in as <span class="user-link-no-access">{{ user }}</span></p>
+        <p class="admin-no-access-logout-link"><a href="{% url 'admin_logout' %}"">Logout</a></p>
+        {% if request.user.profile_picture %}
+        <img src="{{request.user.profile_picture.url}}">
+        {% else %}
+        <p>No profile picture</p>
+        {% endif %}
+    </div>
+</div>
+
+<div id="react-root"></div>
+
+{% endblock %}
+
+<!-- React bundle -->
+<script src="{% static 'admin/react/build/assets/index-Bv-C-gp-.js' %}"></script>   <!-- adjust path -->
+<!-- For Vite, also include CSS if needed -->
+
+
+
+
+
+
+
+
+
+
+
+

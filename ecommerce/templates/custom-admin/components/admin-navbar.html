@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                
+                {% if request.user.is_superuser or request.user.admin_staff %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin_user_detail_staff' slug=request.user.username %}">Profile</a>
+                    </li>
+                {% endif %}
+
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" aria-disabled="true">Disabled</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        {% if request.user.first_name %}
+                            <a class="nav-name-link nav-link" href="{% url 'admin_profile' %}">{{ request.user.first_name }}</a>
+                        {% else %}
+                            <a class="nav-possible-username-link nav-link" href="{% url 'admin_profile' %}">{{ request.user.username }}</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin_logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-disabled="true" href="{% url 'admin_login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-disabled="true" href="{% url 'admin_register' %}">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </div>
+        </div>
+</nav>

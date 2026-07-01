@@ -1,0 +1,64 @@
+{% extends 'custom-admin/admin-base.html' %}
+
+{% block title %}
+- Staff Users
+{% endblock %}
+
+{% block bodyblock %}
+
+</br>
+<h1>Staff Users</h1>
+
+</br>
+<div class="row admin-users-list-div">
+    {% for i in page_obj %}
+        <div class="card text-white bg-secondary mb-3 mx-auto col-4 d-flex flex-column" style="max-width: 18rem;">
+            <div class="card-header">{{i.id}}</div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{i.username}}</h5>
+                    {% if i.first_name or i.last_name %}
+                        <p class="single-line-p">{{i.first_name}} {{i.last_name}}</p>
+                    {% else %}
+                        <p class="single-line-p">No Name on the Database</p>
+                    {% endif %}
+                    {% if i.profile_picture %}
+                    <img src="{{ i.profile_picture.url }}"
+                        alt="Current profile picture"
+                        class="img-fluid rounded-circle"
+                        style="max-width: 180px; height: 180px;">
+                    <br>
+                    {% elif not i.profile_picture %}
+                        <p class="single-line-p">There's no profile picture</p>
+                    {% endif %}
+                    <!--<a href="{% url 'admin_user_detail' slug=i.username %}"><button class="btn btn-primary mt-bottom">See Details</button></a>-->
+                    <div class="card-footer mt-auto">
+                        <a href="{% url 'admin_user_detail_staff' slug=i.username %}"><button class="btn btn-primary">See Details</button></a>
+                    </div>
+                </div>
+        </div>
+        <!--<a class="admin-users-individual-link" href="{% url 'admin_user_detail' slug=i.username %}"><p class="admin-users-individual-p">{{i.username}}</p></a>-->
+    {% endfor %}
+
+    <!--Pagination controls-->
+    {% if page_obj.has_other_pages %}
+        <div class="pagination justify-content-center">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

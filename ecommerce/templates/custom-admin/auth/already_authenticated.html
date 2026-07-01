@@ -1,0 +1,27 @@
+{% extends 'custom-admin/admin-base.html' %}
+
+{% block title %}
+- Already Authenticated
+{% endblock %}
+
+{% block bodyblock %}
+
+<div class="row">
+</br>
+    <div class="col-xs-12 col-sm-12 shadow p-4 mb-5 bg-body rounded already-authenticated" >
+        <h1 class="already-authenticated-h1">You are already logged in as {% if request.user.is_superuser or request.user.admin_staff %}<span class="already-authenticated-requested-user"><a href="{% url 'admin_user_detail' slug=requested_user.username %}">{{ request.user.username }}</a></span>{% elif not request.user.admin_staff and not request.user.is_superuser and request.user.is_authenticated %}<span class="admin-already-authenticated-user-without-link">{{ requested_user.username }}</span>{% elif is_anon == True %}Anonymous{% endif %}.</h1>
+        <p>Logout to login as a different user.</p>
+        <p>You can:</p>
+        <ul>
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'admin_logout' %}">Logout</a></li>
+            {% elif request.user.admin_staff or request.user.is_superuser %}
+            <li><a href="{% url 'admin_user_detail' slug=requested_user %}">Go to your admin profile</a></li>
+            <li><a href="{% url 'admin_home' %}">Go to the admin home</a></li>
+            {% endif %}
+            <li><a href="{% url 'home' %}">Go to the store home</a></li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

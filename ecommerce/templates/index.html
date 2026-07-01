@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %}
+- E-commerce
+{% endblock %}
+
+{% block content %}
+    <div id="root"></div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <link rel="stylesheet" href="{% static 'dist/assets/main-nqMpL4T3.css' %}" />
+    <script type="module" src="{% static 'dist/assets/main-Bw8c8umN.js' %}"></script>
+
+    <script>
+        window.__INITIAL_DATA__ = {
+            user: {% if request.user.is_authenticated %}
+                {
+                    "is_authenticated": true,
+                    "username": "{{ request.user.username|escapejs }}"
+                }
+            {% else %}
+                { "is_authenticated": false }
+            {% endif %}
+        };
+    </script>
+{% endblock %}

@@ -1,0 +1,200 @@
+body {
+    background-color: grey;
+    color: white;
+    text-align: center;
+}
+
+.admin-login-board form label {
+    color: darkgray;
+}
+
+.navbar-custom {
+    background-color: darkgray !important;    
+}
+
+/*.nav-user-double-li {
+    align-items: center;
+}*/
+
+.nav-user a {
+    text-decoration: underline;
+    color: white
+}
+
+.body-title {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+}
+
+.body-sales {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+}
+
+.admin-register-form {
+    color: darkgrey;
+}
+
+.admin-register-form form label, .admin-register-form h1 {
+    color: black;
+}
+
+.admin-users-add-users-link {
+    display: inline-block;
+    text-decoration: underline;
+    color: white;
+}
+
+.admin-users-add-users-link:visited {
+    text-decoration: underline;
+}
+
+.admin-users-add-users-img {
+    width: 20px;
+    height: 20px;
+}
+
+.admin-users-individual-link {
+    color: white;
+    /*margin-bottom: 1px white solid;*/
+}
+
+.admin-users-individual-p {
+    border-top: 3px solid white;
+    padding-bottom: 5px;
+    border-bottom: 3px solid white;
+}
+
+.user-link-no-access {
+    text-decoration: underline;
+}
+
+.already-authenticated {
+    color: darkgrey;
+}
+
+.already-authenticated h1 {
+    color: black;
+}
+
+.already-authenticated ul {
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0;
+}
+
+/*.already-authenticated ul li {
+    display: inline-block;
+}*/
+
+.already-authenticated ul a {
+    color: brown;
+}
+
+.already-authenticated-requested-user a {
+    text-decoration: underline;
+    color: black;
+}
+
+.admin-no-access-logout-link a {
+    color: darkgray;
+}
+
+.no-access-after-login-requested-user a {
+    color: black;
+}
+
+.admin-already-authenticated-user-without-link {
+    text-decoration: underline;
+}
+
+.admin-user-detail-staff-white-box {
+    color: darkgray;
+}
+
+.admin-staff-user-profile-h1 {
+    text-decoration: underline;
+}
+
+.admin-staff-user-profile-username {
+    text-decoration: underline;
+}
+
+.admin-users-list-div {
+    text-align: center;
+}
+
+.single-line-p {
+    display: inline;
+    width: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.pagination {
+    text-align: center;
+}
+
+.pagination span {
+    text-align: center;
+}
+
+.pagination a {
+    color: white;
+}
+
+.users-staff-members-h1 a{
+    color: white;
+}
+
+.users-staff-white-bg {
+    color: black;
+}
+
+.btn-primary {
+    background-color: grey;
+    border: 1px solid white;
+}
+
+.user-logged-status {
+    display: inline-block;
+}
+
+/*
+.nav-logged-ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    list-style-type: none;
+}
+
+
+.logged-in {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.logged-in-text {
+    margin-right: 4px;
+}
+
+.divider {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+*/
+
+.admin-profile-wb {
+    color: black;
+}
+
+.admin-profile-second-h2 {
+    text-decoration: underline;
+}

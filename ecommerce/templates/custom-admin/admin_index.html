@@ -1,0 +1,33 @@
+{% extends 'custom-admin/admin-base.html' %}
+{% load static %}
+
+{% block head_title %}
+- {{ panel_title|default:"Admin Control Center" }}
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4 text-dark fw-bold">{{ panel_title|default:"Store Control Center" }}</h1>
+        
+        <div id="custom-admin-root"></div>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <link rel="stylesheet" href="{% static 'admin/css/admin-css.css' %}" />
+    <script type="module" src="{% static 'dist/assets/admin-DKXp-k_k.js' %}"></script>
+
+    <script>
+        window.__INITIAL_DATA__ = {
+            user: {% if request.user.is_authenticated %}
+                {
+                    "is_authenticated": true,
+                    "username": "{{ request.user.username|escapejs }}"
+                }
+            {% else %}
+                { "is_authenticated": false }
+            {% endif %},
+            is_admin_area: true
+        };
+    </script>
+{% endblock %}
