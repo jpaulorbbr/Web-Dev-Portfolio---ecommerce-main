@@ -202,18 +202,18 @@ body {
 /* Sidebar Colapsável */
 #sidebar {
     width: 260px;
-    transition: width 0.3s ease;
-    overflow-x: hidden;
+    min-width: 260px;
+    transition: all 0.3s ease;
+    overflow: hidden;
 }
 
 #sidebar.sidebar-collapsed {
     width: 60px !important;
+    min-width: 60px !important;
 }
 
-#sidebar.sidebar-collapsed .nav-link {
-    text-align: center;
-    padding: 12px 0;
-    font-size: 0.9rem;
+#sidebar.sidebar-collapsed .nav-link span {
+    display: none;
 }
 
 #main-content {
@@ -233,4 +233,18 @@ body {
     #main-content {
         margin-left: 60px !important;
     }
+}
+
+.sidebar-collapsed {
+    width: 60px !important;
+    min-width: 60px !important;
+}
+
+.sidebar-collapsed .nav-link {
+    text-align: center;
+    padding: 12px 0;
+}
+
+.main-expanded {
+    margin-left: 60px !important;
 }
