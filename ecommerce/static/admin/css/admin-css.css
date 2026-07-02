@@ -198,3 +198,29 @@ body {
 .admin-profile-second-h2 {
     text-decoration: underline;
 }
+
+main {
+    margin-left: 260px !important;   /* Ajuste conforme a largura da sidebar */
+    transition: margin-left 0.3s;
+}
+
+@media (max-width: 992px) {
+    main {
+        margin-left: 0 !important;
+    }
+}
+
+.sidebar-collapsed {
+    width: 60px !important;
+    transition: width 0.3s;
+}
+
+.sidebar-collapsed .nav-link {
+    text-align: center;
+    padding: 12px 0;
+}
+
+.main-expanded {
+    margin-left: 60px !important;
+    transition: margin-left 0.3s;
+}
