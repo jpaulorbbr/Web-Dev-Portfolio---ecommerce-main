@@ -212,7 +212,6 @@ main {
 
 .sidebar-collapsed {
     width: 60px !important;
-    transition: width 0.3s;
 }
 
 .sidebar-collapsed .nav-link {
@@ -222,5 +221,4 @@ main {
 
 .main-expanded {
     margin-left: 60px !important;
-    transition: margin-left 0.3s;
 }
