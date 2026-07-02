@@ -57,11 +57,16 @@
             const mainContent = document.getElementById('main-content');
             const toggleBtn = document.getElementById('sidebarToggle');
 
+            console.log("Sidebar encontrado?", !!sidebar); // Debug
+
             if (toggleBtn && sidebar && mainContent) {
-                toggleBtn.addEventListener('click', () => {
+                toggleBtn.addEventListener('click', function() {
+                    console.log("Toggle clicado!"); // Debug
                     sidebar.classList.toggle('sidebar-collapsed');
                     mainContent.classList.toggle('main-expanded');
                 });
+            } else {
+                console.error("Elementos da sidebar não encontrados!");
             }
         });
     </script>
