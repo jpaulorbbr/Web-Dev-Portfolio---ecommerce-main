@@ -245,6 +245,10 @@ body {
     visibility: hidden !important;
 }
 
+.sidebar-collapsed .menu-icon {
+    font-size: 1.4rem;
+}
+
 .sidebar-collapsed .nav-link {
     text-align: center;
     padding: 12px 0;
