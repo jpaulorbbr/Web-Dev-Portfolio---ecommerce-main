@@ -202,18 +202,16 @@ body {
 /* Sidebar Colapsável */
 #sidebar {
     width: 260px;
-    min-width: 260px;
-    transition: all 0.3s ease;
-    overflow: hidden;
+    transition: width 0.3s ease;
 }
 
 #sidebar.sidebar-collapsed {
     width: 60px !important;
-    min-width: 60px !important;
 }
 
-#sidebar.sidebar-collapsed .nav-link span {
-    display: none;
+#sidebar.sidebar-collapsed .nav-link {
+    text-align: center;
+    padding: 12px 0;
 }
 
 #main-content {
@@ -228,17 +226,17 @@ body {
 /* Ajuste para telas menores */
 @media (max-width: 992px) {
     #sidebar {
-        width: 60px;
+        width: 100%;
     }
     #main-content {
         margin-left: 60px !important;
     }
 }
 
-.sidebar-collapsed {
+/*.sidebar-collapsed {
     width: 60px !important;
     min-width: 60px !important;
-}
+}*/
 
 .sidebar-collapsed .nav-link {
     text-align: center;
