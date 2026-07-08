@@ -204,6 +204,7 @@ body {
     width: 260px;
     transition: width 0.3s ease;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
 #sidebar.sidebar-collapsed {
@@ -236,17 +237,19 @@ body {
 }
 
 .sidebar-collapsed {
-    width: 60px !important;
+    width: 70px !important;
     min-width: 60px !important;
 }
 
 .sidebar-collapsed .menu-text {
     display: none !important;
     visibility: hidden !important;
+    width: 0;
+    overflow: hidden;
 }
 
 .sidebar-collapsed .menu-icon {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 }
 
 .sidebar-collapsed .nav-link {
@@ -257,4 +260,80 @@ body {
 
 .main-expanded {
     margin-left: 60px !important;
+}
+
+.sidebar-collapsed .menu-text,
+.sidebar-collapsed h5.text-uppercase,
+.sidebar-collapsed .nav-link span:not(.menu-icon) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Garantir que o ícone fique bom */
+.sidebar-collapsed .menu-icon {
+    font-size: 1.6rem;
+    margin: 0 auto;
+}
+
+.sidebar-collapsed .menu-title {
+    display: none !important;
+}
+
+/* === SIDEBAR COLLAPSED (só ícones) === */
+.sidebar-collapsed .menu-text,
+.sidebar-collapsed .menu-title,
+.sidebar-collapsed h5.text-uppercase {
+    display: none !important;
+}
+
+/* === SIDEBAR EXPANDIDO (mostrar texto) === */
+.sidebar-expanded .menu-text,
+.sidebar-expanded .menu-title,
+.sidebar-expanded h5.text-uppercase {
+    display: inline !important;
+}
+
+/* Ícones sempre visíveis */
+.menu-icon {
+    display: inline-block;
+    min-width: 32px;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+/* Ajuste de largura */
+.sidebar-expanded {
+    width: 260px !important;
+}
+
+/* Colapsado - só ícones */
+.sidebar-collapsed .menu-text,
+.sidebar-collapsed .menu-title,
+.sidebar-collapsed h5 {
+    display: none !important;
+}
+
+/* Expandido - texto visível */
+.sidebar-expanded .menu-text,
+.sidebar-expanded .menu-title,
+.sidebar-expanded h5 {
+    display: inline-block !important;
+}
+
+.sidebar-collapsed .menu-text,
+.sidebar-collapsed .menu-title,
+.sidebar-collapsed h4,
+.sidebar-collapsed h5 {
+    display: none !important;
+}
+
+.sidebar-expanded .menu-text,
+.sidebar-expanded .menu-title,
+.sidebar-expanded h4,
+.sidebar-expanded h5 {
+    display: inline-block !important;
 }
