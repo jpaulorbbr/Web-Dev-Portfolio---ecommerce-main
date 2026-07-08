@@ -1,5 +1,12 @@
 myvenv/
+ecommerce/db.sqlite3
+ecommerce/media/profile_pics/
 ecommerce/frontend/node_modules/
 ecommerce/frontend/dist/
 ecommerce/static/dist/
 ecommerce/staticfiles/
+
+# Python bytecode cache
+__pycache__/
+*.py[cod]
+
