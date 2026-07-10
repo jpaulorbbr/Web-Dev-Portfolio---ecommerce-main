@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import AdminDashboard from './Dashboard'
-import Users from './Users'
-import StaffUsers from './StaffUsers'
-import Products from './Products'
+import AdminDashboard from './pages/Dashboard'
+import Users from './pages/Users'
+import StaffUsers from './pages/StaffUsers'
+import Products from './pages/Products'
 
 function AdminApp() {
   return (
