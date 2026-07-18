@@ -1,0 +1,7 @@
+export default function Topbar() {
+    return (
+        <header>
+            <h1>Administration</h1>
+        </header>
+    )
+}

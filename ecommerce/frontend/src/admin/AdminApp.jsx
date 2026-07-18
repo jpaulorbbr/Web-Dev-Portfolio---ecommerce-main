@@ -3,15 +3,19 @@ import AdminDashboard from './pages/Dashboard'
 import Users from './pages/Users'
 import StaffUsers from './pages/StaffUsers'
 import Products from './pages/Products'
+import Profile from './pages/Profile'
 
 function AdminApp() {
   return (
     <Router basename="/admin">
       <Routes>
-        <Route path="/" element={<AdminDashboard />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/users/staff" element={<StaffUsers />} />
-        <Route path="/products" element={<Products />} />
+        <Route element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="users" element={<Users />} />
+          <Route path="staff" element={<StaffUsers />} />  
+          <Route path="products" element={<Products />} />
+        </Route>
       </Routes>
     </Router>
   )
