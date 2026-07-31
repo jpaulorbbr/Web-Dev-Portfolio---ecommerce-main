@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import AdminLayout from './components/AdminLayout'
 import AdminDashboard from './pages/Dashboard'
 import Users from './pages/Users'
 import StaffUsers from './pages/StaffUsers'

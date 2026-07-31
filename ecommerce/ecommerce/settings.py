@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'admin',
     'phonenumber_field',
     'rest_framework',
+    'api',
     'corsheaders',
     'django_vite',
 ]
@@ -183,4 +184,9 @@ PHONENUMBER_DEFAULT_FORMAT = 'INTERNATIONAL'
 
 # Database storage format (usually matches display)
 PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
 
