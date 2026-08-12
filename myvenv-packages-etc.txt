@@ -12,8 +12,13 @@ $ . myvenv/Scripts/activate
 
 In ecommerce/frontend:
 
+*npm install react
 *npm install vite
 *npm install axios
+
+Or just:
+
+$ npm install
 
 REACT
 *Start react with:
