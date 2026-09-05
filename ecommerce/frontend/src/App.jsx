@@ -21,9 +21,12 @@ function App() {
 
   return (
     <Router>
-      <div className="container mt-4">
-        <HomePage user={user} csrf={csrf} />
-      </div>
+      {/* 2. Envolva o conteúdo da aplicação dentro do CartProvider */}
+      <CartProvider>
+        <div className="container mt-4">
+          <HomePage user={user} csrf={csrf} />
+        </div>
+      </CartProvider>
     </Router>
   )
 }
