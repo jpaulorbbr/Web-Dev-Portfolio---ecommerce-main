@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
+import { CartProvider } from './contexts/CartContext' // 1. Importe o CartProvider
 
 function ForceAdminRedirect() {
   // window.location.replace força o browser a buscar a página direto do servidor Django

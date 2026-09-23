@@ -57,17 +57,17 @@ export default function HomePage({ user, csrf }) {
 }
 */}
 
-import React,  { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../contexts/CartContext';
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { addToCart, totalItems } = useCart(); //Hook do carrinho!
+  const { addToCart, totalItems } = useCart(); // <--- O hook do carrinho
 
   useEffect(() => {
-    fetch('/api/products')
-      .then ((res) => res.json())
+    fetch('/api/products/')
+      .then((res) => res.json())
       .then((data) => {
         setProducts(data);
         setLoading(false);
@@ -80,7 +80,6 @@ const HomePage = () => {
 
   return (
     <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Cabeçalho simples com indicador do carrinho */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
         <h2>Catálogo de Produtos</h2>
         <div style={{ fontWeight: 'bold', fontSize: '18px' }}>
@@ -89,7 +88,9 @@ const HomePage = () => {
       </div>
 
       {loading ? (
-        <p>Carregando...</p>
+        <p>Carregando catálogo...</p>
+      ) : products.length === 0 ? (
+        <p>Nenhum produto cadastrado no momento.</p>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '20px' }}>
           {products.map((product) => (
