@@ -1,8 +1,9 @@
 from rest_framework.response import Response 
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 from rest_framework import status 
 from products.models import Product 
-from .serializers import ProductSerializer 
+from .serializers import ProductSerializer, OrderSerializer 
 
 @api_view(['GET'])
 def list_products(request):
@@ -50,3 +51,12 @@ def product_detail(request, pk):
     elif request.method == 'DELETE':
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def create_order(request):
+    serializer = OrderSerializer(data=request.data)
+    if serializer.is_valid():
+        order = serializer.save()
+        return Response({'message': 'Pedido criado com sucesso!', 'order_id': order.id}, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

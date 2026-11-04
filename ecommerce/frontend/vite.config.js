@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
@@ -7,11 +8,15 @@ export default defineConfig({
     outDir: '../static/dist',
     emptyOutDir: true,
     rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'src/main.jsx'),
+        admin: resolve(__dirname, 'src/admin/main.jsx'),
+      },
       output: {
         entryFileNames: 'assets/[name].js',
         chunkFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name].[ext]' // Garante que o CSS vire assets/main.css e assets/admin.css
-      }
-    }
-  }
+        assetFileNames: 'assets/[name].[ext]',
+      },
+    },
+  },
 });

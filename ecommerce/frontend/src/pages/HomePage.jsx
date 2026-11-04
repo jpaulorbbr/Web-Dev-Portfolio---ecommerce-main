@@ -58,12 +58,15 @@ export default function HomePage({ user, csrf }) {
 */}
 
 import React, { useState, useEffect } from 'react';
-import { useCart } from '../contexts/CartContext';
+import { useCart } from "../contexts/CartContext";
+import CartModal from '../components/CartModal';
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { addToCart, totalItems } = useCart(); // <--- O hook do carrinho
+  const [isCartOpen, setIsCartOpen] = useState(false); // Estado para controlar o modal
+  
+  const { addToCart, totalItems } = useCart();
 
   useEffect(() => {
     fetch('/api/products/')
@@ -80,32 +83,46 @@ const HomePage = () => {
 
   return (
     <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h2>Catálogo de Produtos</h2>
-        <div style={{ fontWeight: 'bold', fontSize: '18px' }}>
-          🛒 Carrinho: <span style={{ color: '#007bff' }}>{totalItems} itens</span>
-        </div>
+      {/* Cabeçalho */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 'bold' }}>Catálogo de Produtos</h2>
+        
+        {/* Botão para Abrir o Modal do Carrinho */}
+        <button 
+          onClick={() => setIsCartOpen(true)}
+          style={{ padding: '10px 18px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '20px', cursor: 'pointer', fontWeight: 'bold', fontSize: '15px' }}
+        >
+          🛒 Carrinho ({totalItems})
+        </button>
       </div>
 
+      {/* Grid de Produtos */}
       {loading ? (
         <p>Carregando catálogo...</p>
       ) : products.length === 0 ? (
-        <p>Nenhum produto cadastrado no momento.</p>
+        <p>Nenhum produto disponível no momento.</p>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '20px' }}>
           {products.map((product) => (
-            <div key={product.id} style={{ border: '1px solid #ddd', borderRadius: '8px', padding: '15px' }}>
-              <div style={{ width: '100%', height: '180px', backgroundColor: '#eee', marginBottom: '10px' }}>
-                {product.image && (
-                  <img src={product.image} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                )}
+            <div key={product.id} style={{ border: '1px solid #ddd', borderRadius: '8px', padding: '15px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <div>
+                <div style={{ width: '100%', height: '180px', backgroundColor: '#f0f0f0', marginBottom: '10px', borderRadius: '4px', overflow: 'hidden' }}>
+                  {product.image && (
+                    <img src={product.image} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  )}
+                </div>
+                <h3 style={{ fontSize: '18px', margin: '0 0 8px 0' }}>{product.name}</h3>
+                <p style={{ fontWeight: 'bold', fontSize: '18px', color: '#333', margin: '0 0 12px 0' }}>
+                  R$ {Number(product.price).toFixed(2)}
+                </p>
               </div>
-              <h3>{product.name}</h3>
-              <p style={{ fontWeight: 'bold', margin: '10px 0' }}>R$ {Number(product.price).toFixed(2)}</p>
               
               <button
-                onClick={() => addToCart(product)}
-                style={{ width: '100%', padding: '10px', backgroundColor: '#28a745', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                onClick={() => {
+                  addToCart(product);
+                  setIsCartOpen(true); // Abre o carrinho automaticamente ao adicionar
+                }}
+                style={{ width: '100%', padding: '10px', backgroundColor: '#28a745', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
               >
                 Adicionar ao Carrinho
               </button>
@@ -113,6 +130,9 @@ const HomePage = () => {
           ))}
         </div>
       )}
+
+      {/* Componente Modal do Carrinho */}
+      <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </div>
   );
 };

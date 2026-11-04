@@ -5,4 +5,5 @@ from . import views
 urlpatterns = [
     path('products/', views.product_list_create, name='api-products-list'),
     path('products/<int:pk>/', views.product_detail, name='api-product-detail'),
+    path('orders/', views.create_order, name='api-order-create'), # <-- Nova rota de pedidos
 ]

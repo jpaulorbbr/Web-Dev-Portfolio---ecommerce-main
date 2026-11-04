@@ -56,7 +56,7 @@ export const CartProvider = ({ children }) => {
                 cart,
                 addToCart,
                 removeFromCart,
-                updatequantity,
+                updateQuantity,
                 clearCart,
                 totalItems,
                 totalPrice
@@ -67,4 +67,4 @@ export const CartProvider = ({ children }) => {
     );
 };
 
-export const useCart = () => useContext(CartContext)
+export const useCart = () => useContext(CartContext);
